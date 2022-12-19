@@ -16,6 +16,7 @@ COPY ./pom.xml ./pom.xml
 RUN chmod 755 /app/mvnw
 
 RUN ./mvnw dependency:go-offline -B
+RUN ./mvnw package -DskipTests
 
-ENTRYPOINT ["./mvnw", "package", "-DskipTests"]
-# ENTRYPOINT ["java","-jar","com.iontech:product-service:0.0.1-SNAPSHOT.jar"]
+ENTRYPOINT ["java","-jar","./target/product-service-0.0.1-SNAPSHOT.jar"]
+# ENTRYPOINT ["./mvnw", "exec:java", "-Dexec.mainClass=\"com.iontech.product-service.ProductServiceApplication\""]
