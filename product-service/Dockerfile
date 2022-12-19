@@ -17,6 +17,5 @@ RUN chmod 755 /app/mvnw
 
 RUN ./mvnw dependency:go-offline -B
 
-RUN ./mvnw package -DskipTests
-# RUN ls -al
+ENTRYPOINT ["./mvnw", "package", "-DskipTests"]
 # ENTRYPOINT ["java","-jar","com.iontech:product-service:0.0.1-SNAPSHOT.jar"]
